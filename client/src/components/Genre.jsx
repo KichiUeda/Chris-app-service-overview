@@ -14,6 +14,10 @@ const SpanStyled = styled.span`
   color: white;
   margin: 0;
   padding: 0;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;
 
 const Genre = (props) => {

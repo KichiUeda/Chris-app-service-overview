@@ -28,7 +28,7 @@ const OverviewStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 1140px;
-  height: 257px;
+  height: 239px;
   margin: auto;
   font-weight: bold;
   font-size: 14px;
@@ -54,7 +54,6 @@ class App extends React.Component {
     if (id === '/') {
       id = '/21';
     }
-
     // ************ comment out below url to run service locally
     // const fetchURL = `http://ec2-3-129-17-68.us-east-2.compute.amazonaws.com:3002/system_req${id}`;
 
@@ -64,7 +63,8 @@ class App extends React.Component {
     axios
       .get(fetchURL, { crossdomain: true })
       .then((response) => {
-        const newState = { overview: response.data[0], genre: response.data[1] };
+        console.log(response.data);
+        const newState = { overview: response.data[0], genre: [response.data[2]] };
 
         if (response.data[2]) {
           newState.steamDesc = response.data[2];

@@ -28,17 +28,15 @@ app.get('/system_req/:product_id', (req, res) => {
   const id = req.params.product_id;
   Overview.find({ product_id: id }).then((doc) => {
     axios
-      // .get(`http://ec2-54-224-38-115.compute-1.amazonaws.com:5150/genre/${id}`) ----production url
-      .get('https://www.google.com')
+      // .get(`http://ec2-54-224-38-115.compute-1.amazonaws.com:5150/genre/${id}`)
+      .get('http://google.com/')
       .then((response) => {
         const resArray = doc;
         const newGenre = response.data;
         const steamNumber = resArray[0].steam_rating;
 
-        // resArray.push(newGenre);
-        // below for demo purposes only
         resArray.push('RPG');
-        console.log(resArray);
+
         if (steamNumber) {
           const describeSteamRating =
             steamNumber >= 95
