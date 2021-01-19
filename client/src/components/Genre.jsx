@@ -17,13 +17,17 @@ const SpanStyled = styled.span`
 `;
 
 const Genre = (props) => {
-  const genres = props.genres.map((genre, index) => {
-    return <SpanStyled key={index}> {genre}</SpanStyled>;
-  });
+  console.log(props);
+  // const genres = props.genres.map((genre, index) => {
+  //   return <SpanStyled key={index}> {genre}</SpanStyled>;
+  // });   ---------production code
+
   return (
     <GenreStyled>
       <ParaStyled>GENRE</ParaStyled>
-      {genres}
+      {/* below line is production code.  next line is for demo purposes */}
+      {/* {genres} */}
+      <SpanStyled key={'hi'}> {props.genres}</SpanStyled>
     </GenreStyled>
   );
 };

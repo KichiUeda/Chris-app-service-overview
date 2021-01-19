@@ -56,10 +56,10 @@ class App extends React.Component {
     }
 
     // ************ comment out below url to run service locally
-    const fetchURL = `http://ec2-3-129-17-68.us-east-2.compute.amazonaws.com:3002/system_req${id}`;
+    // const fetchURL = `http://ec2-3-129-17-68.us-east-2.compute.amazonaws.com:3002/system_req${id}`;
 
     // ************ uncomment below url to run service locally
-    // const fetchURL = `http://127.0.0.1:3002/system_req${id}`;
+    const fetchURL = `http://127.0.0.1:3002/system_req${id}`;
 
     axios
       .get(fetchURL, { crossdomain: true })
