@@ -54,17 +54,17 @@ class App extends React.Component {
     if (id === '/') {
       id = '/21';
     }
-
     // ************ comment out below url to run service locally
-    const fetchURL = `http://ec2-3-129-17-68.us-east-2.compute.amazonaws.com:3002/system_req${id}`;
+    // const fetchURL = `http://ec2-3-129-17-68.us-east-2.compute.amazonaws.com:3002/system_req${id}`;
 
     // ************ uncomment below url to run service locally
-    // const fetchURL = `http://127.0.0.1:3002/system_req${id}`;
+    const fetchURL = `http://127.0.0.1:3002/system_req${id}`;
 
     axios
       .get(fetchURL, { crossdomain: true })
       .then((response) => {
-        const newState = { overview: response.data[0], genre: response.data[1] };
+        console.log(response.data);
+        const newState = { overview: response.data[0], genre: [response.data[2]] };
 
         if (response.data[2]) {
           newState.steamDesc = response.data[2];
