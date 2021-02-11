@@ -12,7 +12,7 @@
     "build": "webpack --watch -d",
     "p_build": "webpack -p",
     "p_start": "node ./server/server.js",
-    "start": "nodemon ./server/server.js --ignore node_modules",
+    "start": "nodemon ./server/server.js",
     "seedDB": "node ./database_mongo/seed.js"
   },
   "dependencies": {

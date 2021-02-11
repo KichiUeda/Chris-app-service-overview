@@ -27,12 +27,14 @@ app.get('/system_req/:product_id', (req, res) => {
   console.log('got it');
   const id = req.params.product_id;
   Overview.find({ product_id: id }).then((doc) => {
+    // This block has been modified for local use.  For use with all services in place, remove call to google.com and replace with call to description service
+    // Also uncomment newGenre const and push that into resArray instead of 'RPG'
     axios
       // .get(`http://ec2-54-224-38-115.compute-1.amazonaws.com:5150/genre/${id}`)
       .get('http://google.com/')
       .then((response) => {
         const resArray = doc;
-        const newGenre = response.data;
+        // const newGenre = response.data; commented out for local use
         const steamNumber = resArray[0].steam_rating;
 
         resArray.push('RPG');
