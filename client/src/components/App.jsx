@@ -63,8 +63,7 @@ class App extends React.Component {
     axios
       .get(fetchURL, { crossdomain: true })
       .then((response) => {
-        console.log(response.data);
-        const newState = { overview: response.data[0], genre: [response.data[2]] };
+        const newState = { overview: response.data[0], genre: [response.data[1]] };
 
         if (response.data[2]) {
           newState.steamDesc = response.data[2];

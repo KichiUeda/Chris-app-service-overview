@@ -6,7 +6,7 @@ require('dotenv').config({
 });
 const axios = require('axios');
 const express = require('express');
-const bodyParser = require('body-parser');
+const faker = require('faker');
 const Overview = require('../database_mongo/index.js');
 // const data = require('../database_mongo/seed.js');
 
@@ -14,8 +14,8 @@ const app = express();
 
 app.use(express.static('public', { fallthrough: true }));
 app.use('/:product_id', express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get('/:product_id', (req, res) => {
   const product_id = req.params.product_id;
@@ -35,10 +35,11 @@ app.get('/system_req/:product_id', (req, res) => {
       .then((response) => {
         const resArray = doc;
         // const newGenre = response.data; commented out for local use
+        const newGenre = faker.fake('{{company.bsAdjective}} {{hacker.ingverb}}');
         const steamNumber = resArray[0].steam_rating;
 
-        resArray.push('RPG');
-
+        resArray.push(newGenre);
+        console.log(resArray);
         if (steamNumber) {
           const describeSteamRating =
             steamNumber >= 95
